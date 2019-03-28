@@ -21,7 +21,7 @@ public class EchartHumiOutController {
     @RequestMapping("/sensor_out_humi")
     @ResponseBody
 //    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    public List<Sensor> myhumiSensor() {
+    public List<Sensor> myhumioutSensor() {
         return humiOutService.mySensor();
 
     }

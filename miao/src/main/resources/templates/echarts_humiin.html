@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AmazingBalcony</title>
+    <script src="js/jquery-1.9.0.js" th:src="@{asserts/js/jquery-1.9.0.js}"></script>
+    <link rel="stylesheet" href="css/bootstrap-4.0.0/dist/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.js}"></script>
+    <link rel="stylesheet" href="css/data.css" th:href="@{/asserts/css/data.css}">
+    <script src="js/echarts.js" th:src="@{asserts/js/echarts.js}"></script>
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+</head>
+<body>
+
+<div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="view.html" th:href="@{/view}">基地实景</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="monitor.html" th:href="@{/monitor}">物联监控</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="echarts_humiout.html" th:href="@{/data}">统计分析</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="infos.html" th:href="@{/infos}">植物档案</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="card-deck">
+            <div class="card">
+                <center><img class="card-img-top img" src="images/室外温度.png"  th:src="@{asserts/img/室外温度.png}">
+                    <div class="card-body">
+                        <a class="card-title" th:href="out_temp" style="text-decoration: none;color: black">室外温度</a>
+                        <p class="card-text"></p>
+                    </div></center>
+            </div>
+            <div class="card">
+                <center><img class="card-img-top img" src="images/土壤温度.png" th:src="@{asserts/img/土壤温度.png}">
+                    <div class="card-body">
+                        <a class="card-title" th:href="in_temp" style="text-decoration: none;color: black">土壤温度</a>
+                        <p class="card-text"></p>
+                    </div></center>
+            </div>
+            <div class="card">
+                <center><img class="card-img-top img" src="images/湿度.png" th:src="@{asserts/img/湿度.png}">
+                    <div class="card-body">
+                        <a class="card-title" th:href="out_humi" style="text-decoration: none;color: black">室外湿度</a>
+                        <p class="card-text"></p>
+                    </div></center>
+            </div>
+            <div class="card">
+                <center><img class="card-img-top img" src="images/土壤湿度.png" th:src="@{asserts/img/土壤湿度.png}">
+                    <div class="card-body">
+                        <a class="card-title" th:href="in_humi" style="text-decoration: none;color: black">土壤湿度</a>
+                        <p class="card-text"></p>
+                    </div></center>
+            </div>
+        </div>
+        <center><div id="main" style="width: 1000px;height:600px;margin-top: 100px;margin-bottom: 50px"></div></center>
+    </main>
+</div>
+
+<!--<input type="hidden" th:value="${time}" id="time"/>-->
+<!--<input type="hidden" th:value="${humi}" id="humi"/>-->
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    var app = {};
+    var time = [];
+    var humi = [];
+
+    function getLocalTime(nS) {
+        var unixTimestamp = new Date(nS);
+        return commonTime = unixTimestamp.toLocaleString();
+    }
+
+    myChart.showLoading(); //数据获取显示之前先加载一段动画
+    setInterval("test()",2000);
+
+    function test() {
+        $.ajax({
+            type: "GET",
+            url: "/sensor_in_humi",
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                time.length=0;
+                humi.length=0;
+                for (var i = 0; i < result.length; i++) {
+
+                    time.push(getLocalTime(result[i].time));
+                    humi.push(result[i].humi_in);
+                    console.log(time);
+                    console.log(humi);
+                }
+                myChart.hideLoading(); //数据获取成功之后隐藏动画
+                myChart.setOption(option);
+            },
+            error: function (errorMsg) {
+                alert("获取后台数据失败！");
+            }
+        });
+    }
+
+
+    option = null;
+    option = {
+
+        title: {
+            text: ''
+        },
+
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            itemSize: 18,
+            itemGap: 20,
+            right: 20,
+            feature: {
+                saveAsImage: {show: true},
+                dataView: {show: true},
+                magicType: {
+                    type: ['line', 'bar']
+                },
+                dataZoom: {show: true},
+                restore: {show: true},
+            }
+        },
+
+        xAxis: {
+            type: 'category',
+            data: time
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: humi,
+            type: 'line',
+            smooth: true
+        }]
+    };
+
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>
+</body>
+</html>

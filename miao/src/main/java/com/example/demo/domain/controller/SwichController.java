@@ -21,9 +21,9 @@ public class SwichController {
         return "echarts_tempout";
     }
 
-    @GetMapping("/expert")
+    @GetMapping("/infos")
     public String expert(){
-        return "expert";
+        return "infos";
     }
 
     @GetMapping("/out_humi")
@@ -34,5 +34,15 @@ public class SwichController {
     @GetMapping("/out_temp")
     public String out_temp(){
         return "echarts_tempout";
+    }
+
+    @GetMapping("/in_temp")
+    public String in_temp(){
+        return "echarts_tempin";
+    }
+
+    @GetMapping("/in_humi")
+    public String in_humi(){
+        return "echarts_humiin";
     }
 }

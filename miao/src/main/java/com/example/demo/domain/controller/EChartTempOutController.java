@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class EChartTempOutController {
+public class EchartTempOutController {
     @Autowired
     public TempOutService tempOutService;
 
     @RequestMapping("/sensor_out_temp")
     @ResponseBody
 //    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    public List<Sensor> mytempSensor() {
+    public List<Sensor> mytempoutSensor() {
         return tempOutService.mytempSensor();
 
     }
