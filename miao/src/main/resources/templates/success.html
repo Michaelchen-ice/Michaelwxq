@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>成功！</h1>
+    <!--将div中的文本内容设定为制定的值-->
+    <!--后端map中取的map hello中的值代替这是欢迎-->
+    <div id="div01" class="mydiv" th:id="id" th:class="c01" th:text="${hello}">这是欢迎</div>
+</body>
+</html>
