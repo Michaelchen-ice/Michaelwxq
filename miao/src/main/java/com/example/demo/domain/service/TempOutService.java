@@ -2,21 +2,18 @@ package com.example.demo.domain.service;
 
 
 import com.example.demo.domain.entities.Sensor;
-import com.example.demo.domain.mapper.EchartsMapper;
+import com.example.demo.domain.mapper.SensorOutMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.math.BigInteger;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class TempOutService {
 
     @Autowired
-    public EchartsMapper echartsMapper;
+    public SensorOutMapper sensorOutMapper;
     public List<Sensor> mytempSensor() {
 
 
@@ -28,6 +25,6 @@ public class TempOutService {
 //    }
 
 
-        return echartsMapper.getall();
+        return sensorOutMapper.getall();
     }
 }

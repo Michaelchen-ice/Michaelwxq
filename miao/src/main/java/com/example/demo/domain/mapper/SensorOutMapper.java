@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-    public interface EchartsMapper {
+    public interface SensorOutMapper {
         @Select("SELECT * FROM Sensor ORDER BY id DESC LIMIT 10;")
         public List<Sensor> getall();
 }
