@@ -52,23 +52,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>茭白</td>
-                    <td>是</td>
-                    <td>原产中国及东南亚，是一种较为常见的水生蔬菜。在亚洲温带、日本、俄罗斯及欧洲有分布。全草为优良的饲料，为鱼类的越冬场所。也是固堤造陆的先锋植物。</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                <!--/*@thymesVar id="infos" type=""*/-->
+                <tr th:each="info:${infos}">
+                    <!--/*@thymesVar id="id" type=""*/-->
+                    <td th:text="${info.id}"></td>
+                    <td th:text="${info.sort}"></td>
+                    <td th:text="${info.judge}"></td>
+                    <td th:text="${info.infos}"></td>
                 </tr>
                 </tbody>
             </table>

@@ -21,10 +21,10 @@ public class SwichController {
         return "echarts_tempout";
     }
 
-    @GetMapping("/infos")
-    public String expert(){
-        return "infos";
-    }
+//    @GetMapping("/infos")
+////    public String expert(){
+////        return "infos";
+////    }
 
     @GetMapping("/out_humi")
     public String out_humi(){
