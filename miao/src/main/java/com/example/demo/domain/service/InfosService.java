@@ -25,4 +25,8 @@ public class InfosService {
 //        }
         return infosMapper.selectAll();
     }
+
+    public void AddInfos(String sort,int judge,String infos){
+        infosMapper.insertInfos(sort,judge,infos);
+    }
 }

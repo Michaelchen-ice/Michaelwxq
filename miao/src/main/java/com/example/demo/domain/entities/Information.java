@@ -7,7 +7,7 @@ public class Information {
 
     private int id;
     private String sort;
-    private String judge;
+    private int judge;
     private String infos;
     private Date time;
 
@@ -27,11 +27,11 @@ public class Information {
         this.sort = sort;
     }
 
-    public String getJudge() {
+    public int getJudge() {
         return judge;
     }
 
-    public void setJudge(String judge) {
+    public void setJudge(int judge) {
         this.judge = judge;
     }
 

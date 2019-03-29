@@ -42,32 +42,28 @@
         </nav>
 
         <main role="main" class="container-fluid">
-            <h2><a class="btn btn-sm btn-success" href="info" th:href="@{/info}">植物档案添加</a></h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>植物名称</th>
-                    <th>是否适合阳台种植</th>
-                    <th>植物信息</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--/*@thymesVar id="infos" type=""*/-->
-                <tr th:each="info:${infos}">
-                    <!--/*@thymesVar id="id" type=""*/-->
-                    <td th:text="${info.id}"></td>
-                    <td th:text="${info.sort}"></td>
-                    <td th:text="${info.judge}==0?'否':'是'"></td>
-                    <td th:text="${info.infos}"></td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" th:href="@{/info/}+${info.id}">编辑</a>
-                        <button th:attr="del_uri=@{/info/}+${info.id}"  type="submit" class="btn btn-sm btn-danger deleteBtn">删除</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <form th:action="@{/info}" method="post">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">植物名称</label>
+                    <input th:name="sort" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <div class="form-group">
+                    <label>是否适合阳台种植</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input th:name="judge" class="form-check-input" type="radio" name="gender" value="1" th:checked="${info!=null}?${info.judge==1}">
+                        <label class="form-check-label">是</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input th:name="judge" class="form-check-input" type="radio" name="gender" value="0" th:checked="${info!=null}?${info.judge==0}">
+                        <label class="form-check-label">否</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">植物信息</label>
+                    <textarea th:name="infos" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${info!=null}?'修改':'添加'">添加</button>
+            </form>
         </main>
     </div>
 </body>
