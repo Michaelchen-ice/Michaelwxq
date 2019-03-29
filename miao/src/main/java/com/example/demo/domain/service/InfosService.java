@@ -29,4 +29,8 @@ public class InfosService {
     public void AddInfos(String sort,int judge,String infos){
         infosMapper.insertInfos(sort,judge,infos);
     }
+
+    public void DeleteInfo(String sort){
+        infosMapper.deleteInfos(sort);
+    }
 }

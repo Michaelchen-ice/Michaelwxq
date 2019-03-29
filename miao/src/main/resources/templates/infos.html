@@ -62,13 +62,25 @@
                     <td th:text="${info.judge}==0?'否':'是'"></td>
                     <td th:text="${info.infos}"></td>
                     <td>
-                        <a class="btn btn-sm btn-primary" th:href="@{/info/}+${info.id}">编辑</a>
-                        <button th:attr="del_uri=@{/info/}+${info.id}"  type="submit" class="btn btn-sm btn-danger deleteBtn">删除</button>
+                        <a class="btn btn-sm btn-primary" th:href="@{/info/}+${info.sort}">编辑</a>
+
+                        <button th:attr="del_uri=@{/info/}+${info.sort}"  type="submit" class="btn btn-sm btn-danger deleteBtn">删除</button>
+
                     </td>
                 </tr>
                 </tbody>
             </table>
         </main>
+        <form id="deleteEmpForm"  method="post">
+            <input type="hidden" name="_method" value="delete"/>
+        </form>
     </div>
+    <script>
+        $(".deleteBtn").click(function () {
+            //删除当前员工
+            $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+            return false;
+        });
+    </script>
 </body>
 </html>

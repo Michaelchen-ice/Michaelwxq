@@ -5,9 +5,7 @@ import com.example.demo.domain.entities.Information;
 import com.example.demo.domain.service.InfosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +40,12 @@ public class InfosController {
         int judge = Integer.parseInt(request.getParameter("judge"));
         String infos = request.getParameter("infos");
         infosService.AddInfos(sort,judge,infos);
+        return "redirect:/infos";
+    }
+
+    @DeleteMapping("/info/{sort}")
+    public String deleteEmployee(@PathVariable("sort") String sort){
+        infosService.DeleteInfo(sort);
         return "redirect:/infos";
     }
 }
