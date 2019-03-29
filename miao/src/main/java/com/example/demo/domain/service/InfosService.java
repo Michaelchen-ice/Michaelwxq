@@ -16,13 +16,13 @@ public class InfosService {
 
     public List<Information>getAllInfos(){
 
-                for(int i=0;i<infosMapper.selectAll().size();i++){
-          if(infosMapper.selectAll().get(i).getJudge().equals("0")){
-                  infosMapper.selectAll().get(i).setJudge("否");
-              }else {
-                  infosMapper.selectAll().get(i).setJudge("是");
-              }
-        }
+//                for(int i=0;i<infosMapper.selectAll().size();i++){
+//          if(infosMapper.selectAll().get(i).getJudge().equals("0")){
+//                  infosMapper.selectAll().get(i).setJudge("否");
+//              }else {
+//                  infosMapper.selectAll().get(i).setJudge("是");
+//              }
+//        }
         return infosMapper.selectAll();
     }
 }

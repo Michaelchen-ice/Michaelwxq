@@ -57,7 +57,7 @@
                     <!--/*@thymesVar id="id" type=""*/-->
                     <td th:text="${info.id}"></td>
                     <td th:text="${info.sort}"></td>
-                    <td th:text="${info.judge}"></td>
+                    <td th:text="${info.judge}==0?'否':'是'"></td>
                     <td th:text="${info.infos}"></td>
                 </tr>
                 </tbody>
