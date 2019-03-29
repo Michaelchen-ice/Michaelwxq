@@ -63,9 +63,7 @@
                     <td th:text="${info.infos}"></td>
                     <td>
                         <a class="btn btn-sm btn-primary" th:href="@{/info/}+${info.sort}">编辑</a>
-
                         <button th:attr="del_uri=@{/info/}+${info.sort}"  type="submit" class="btn btn-sm btn-danger deleteBtn">删除</button>
-
                     </td>
                 </tr>
                 </tbody>

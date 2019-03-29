@@ -26,11 +26,26 @@ public class InfosService {
         return infosMapper.selectAll();
     }
 
+    public Information SelectBySort(String sort){
+        Information information=new Information();
+        infosMapper.selectBySort(sort).forEach(item -> {
+            information.setSort(item.getSort());
+            information.setJudge(item.getJudge());
+            information.setInfos(item.getInfos());
+        });
+        return information ;
+    }
+
     public void AddInfos(String sort,int judge,String infos){
         infosMapper.insertInfos(sort,judge,infos);
     }
 
     public void DeleteInfo(String sort){
         infosMapper.deleteInfos(sort);
+    }
+
+    public void UpdateInfo(String sort,int judge,String infos){
+        System.out.println(sort);
+        infosMapper.updateInfos(sort,judge,infos);
     }
 }

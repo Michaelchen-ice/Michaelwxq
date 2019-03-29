@@ -50,4 +50,15 @@ public class Information {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Information{" +
+                "id=" + id +
+                ", sort='" + sort + '\'' +
+                ", judge=" + judge +
+                ", infos='" + infos + '\'' +
+                ", time=" + time +
+                '}';
+    }
 }
