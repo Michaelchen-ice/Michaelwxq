@@ -1,0 +1,17 @@
+.box {
+        width:75px;
+        height:75px;
+        content:"0%";
+        line-height:34px;
+        text-align:center;
+        font-size: 13px;
+        right:30px;
+        top:100px;
+        border-radius:50%;
+        border:2px solid #43a547;
+        box-shadow:0 0 2px 0 #e8e5df inset;
+        background:linear-gradient(#f4f4f4  100%,#b6e48f 100%,#9cd87a);
+        background:-webkit-linear-gradient(#f4f4f4 100%,#b6e48f 100%,#9cd87a);
+        background:-moz-linear-gradient(#f4f4f4 100%,#b6e48f 100%,#9cd87a);
+        position: absolute;
+    }

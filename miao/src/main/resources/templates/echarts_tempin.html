@@ -10,6 +10,8 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.js}"></script>
     <link rel="stylesheet" href="css/data.css" th:href="@{/asserts/css/data.css}">
     <script src="js/echarts.js" th:src="@{asserts/js/echarts.js}"></script>
+    <link rel="stylesheet" href="css/view.css" th:href="@{asserts/css/water.css}">
+    <script th:src="@{/asserts/js/water.js}"></script>
     <link rel="shortcut icon" href="/public/favicon.ico" />
 </head>
 <body>
@@ -164,5 +166,23 @@
         myChart.setOption(option, true);
     }
 </script>
+
+<script>
+    setInterval("test1()",500);
+    function test1() {
+        $.ajax({
+            url: '/water',
+            async:true,
+            type: 'get',
+            success:function (num) {
+                intervalcall(num)
+            }
+
+        })
+    }
+</script>
+
+<div class="box" id="box1"></div>
+
 </body>
 </html>
