@@ -32,9 +32,9 @@ function intervalcall(num){
     var mpercent2 = percect>20?(percect-20):percect;
 
     if(isMouseOver){//根据鼠标是否移入显示数据
-        $("#box1").text(Math.round(num*100)/100);
+        $("#box1").html("<br>"+Math.round(num*100)/100+"<br>mL");
     }else{
-        $("#box1").text(percect+"%");/*percect.toString()或者改写法会自动转换为字符串*///(#3D9171    " + mpercent+ "%,#4BCC60 " + percect + "%,#4BCC60)");
+        $("#box1").html("<br>"+percect+"%");/*percect.toString()或者改写法会自动转换为字符串*///(#3D9171    " + mpercent+ "%,#4BCC60 " + percect + "%,#4BCC60)");
     }
 
     $("#box1").css("background","linear-gradient(#f4f4f4    " + (100-percect)+ "%,#b6e48f " + (100-mpercent1) + "%,#9cd87a " + (100-mpercent2) + "%,#9cd87a)");
