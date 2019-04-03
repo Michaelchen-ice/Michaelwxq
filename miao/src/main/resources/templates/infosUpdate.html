@@ -55,6 +55,7 @@
     <main role="main" class="container-fluid">
         <form th:action="@{/info}" method="post" >
             <input type="hidden" th:name="_method" th:value="put"/>
+            <input type="hidden" name="id" th:value="${infosUpdate.id}">
             <div class="form-group">
                 <label for="exampleFormControlInput1">植物名称</label>
                 <input th:name="sort" class="form-control" id="exampleFormControlInput1" th:value="${infosUpdate.sort}">

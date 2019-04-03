@@ -70,7 +70,8 @@ public class InfosController {
         String sort = information.getSort();
         int judge = information.getJudge();
         String infos = information.getInfos();
-        infosService.UpdateInfo(sort,judge,infos);
+        int id = information.getId();
+        infosService.UpdateInfo(sort,judge,infos,id);
         return "redirect:/infos";
     }
 }

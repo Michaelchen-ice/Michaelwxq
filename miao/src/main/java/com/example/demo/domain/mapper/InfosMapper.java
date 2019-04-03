@@ -23,6 +23,6 @@ public interface InfosMapper {
     @Delete("DELETE from Information where sort = #{sort}")
     public void deleteInfos(@Param("sort") String sort);
 
-    @Update("UPDATE Information set judge = #{judge},infos = #{infos},time=now() where sort = #{sort}")
-    public void updateInfos(@Param("sort")String sort,@Param("judge")int judge,@Param("infos")String infos);
+    @Update("UPDATE Information set judge = #{judge},infos = #{infos},time=now() ,sort = #{sort} where id = #{id}")
+    public void updateInfos(@Param("sort")String sort,@Param("judge")int judge,@Param("infos")String infos,@Param("id")int id);
 }

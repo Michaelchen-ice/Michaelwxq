@@ -32,6 +32,7 @@ public class InfosService {
             information.setSort(item.getSort());
             information.setJudge(item.getJudge());
             information.setInfos(item.getInfos());
+            information.setId(item.getId());
         });
         return information ;
     }
@@ -44,8 +45,8 @@ public class InfosService {
         infosMapper.deleteInfos(sort);
     }
 
-    public void UpdateInfo(String sort,int judge,String infos){
+    public void UpdateInfo(String sort,int judge,String infos,int id){
         System.out.println(sort);
-        infosMapper.updateInfos(sort,judge,infos);
+        infosMapper.updateInfos(sort,judge,infos,id);
     }
 }
