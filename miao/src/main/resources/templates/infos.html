@@ -53,11 +53,19 @@
                     <th>操作</th>
                 </tr>
                 </thead>
-                <tbody>
+                <script language="javascript" type="text/javascript">
+                    window.onload = function(){
+                        var oTable = document.getElementById("infos");
+                        for(var i=0;i<oTable.rows.length;i++){
+                            oTable.rows[i].cells[0].innerHTML = (i+1);
+                        }
+                    }
+                </script>
+                <tbody id="infos">
                 <!--/*@thymesVar id="infos" type=""*/-->
                 <tr th:each="info:${infos}">
                     <!--/*@thymesVar id="id" type=""*/-->
-                    <td th:text="${info.id}"></td>
+                    <td></td>
                     <td th:text="${info.sort}"></td>
                     <td th:text="${info.judge}==0?'否':'是'"></td>
                     <td th:text="${info.infos}"></td>
